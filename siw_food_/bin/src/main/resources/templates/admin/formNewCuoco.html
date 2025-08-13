@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<title>New Cuoco</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<!-- Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+
+
+<body>
+	<!-- Header -->
+	<header>
+		<!-- Nav -->
+		<div class="nav container">
+			<!-- Logo -->
+			<a href="#" class="logo">
+				<img src="/images/logo.png" alt="" />
+			</a>
+			<!-- Navbar -->
+			<div class="navbar">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/ricetta" class="nav-link">Ricette</a>
+				<a href="/cuoco" class="nav-link">Cuochi</a>
+				<a href="/ingrediente" class="nav-link">Ingredienti</a>
+			</div>
+			<!--Nav Icons -->
+			<div class="nav-icons">
+				<div th:if="${userDetails}">
+					<a th:text="${userDetails.username}" class="nav-log"></a><br>
+					<a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				</div>
+				<div th:unless="${userDetails}">
+					<a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+				</div>
+			</div>
+	</header>
+	<!--Home-->
+	<section class="home" id="home">
+		<div class="home-content container">
+			<div class="home-text">
+				<h1>Aggiungi un nuovo cuoco</h1>
+				<form th:action="@{/admin/cuoco}" method="POST" th:object="${cuoco}" enctype="multipart/form-data" class="login-form">
+					<div>
+						<label>Nome:</label> <span><input required type="text" th:field="${cuoco.nome}" class="text-input"/></span>
+						<span th:if"${#fields.hasErrors('nome')}" th:errors="${cuoco.nome}"></span>
+					</div>
+					<div>
+						<label>Cognome:</label> <span><input required type="text" th:field="${cuoco.cognome}" class="text-input" /></span>
+						<span th:if"${#fields.hasErrors('cognome')}" th:errors="${cuoco.cognome}"></span>
+					</div>
+					<div>
+						<label>Data di nascita:</label> <span><input required type="date"
+								th:field="${cuoco.dataDiNascita}" class="date-input"/></span>
+						<span th:if"${#fields.hasErrors('dataDiNascita')}" th:errors="${cuoco.dataDiNascita}"></span>
+					</div>
+					<div>
+						<label>Immagine:</label> <span><input type="file" name="image" class="file-input"/></span>
+					</div>
+					<div th:if="${#fields.hasGlobalErrors()}">
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+					</div>
+					<div>
+						<br>
+						<span><button type="submit" class="submit-button">Conferma</button></span>
+					</div>
+				</form>
+			</div>
+			<!--Home Image-->
+			<img src="/images/home.png" alt="" class="home-img">
+			<!-- Home Mask Image-->
+			<img src="/images/home-mask.png" alt="" class="home-mask">
+		</div>
+	</section>
+</body>
+
+</html>

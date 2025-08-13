@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SiwFood - Cuoco</title>
+	<link rel="stylesheet" href="/css/stile.css">
+	<!-- Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+
+<body>
+	<!-- Header -->
+	<header>
+		<!-- Nav -->
+		<div class="nav container">
+			<!-- Logo -->
+			<a href="/" class="logo">
+				<img src="/images/logo.png" />
+			</a>
+			<!-- Navbar -->
+			<div class="navbar">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/ricetta" class="nav-link">Ricette</a>
+				<a href="/cuoco" class="nav-link">Cuochi</a>
+			</div>
+			<!--Nav Icons -->
+			<div class="nav-icons">
+				<div th:if="${userDetails}">
+					<a th:text="${userDetails.username}" class="nav-log"></a><br>
+					<a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				</div>
+				<div th:unless="${userDetails}">
+					<a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Home -->
+	<section class="home" id="home">
+		<div class="home-content container">
+			<div class="home-text">
+				<div th:if="${cuoco}">
+					<h1 th:text="${cuoco.nome} + ' ' + ${cuoco.cognome}">Bruno Barbieri
+					</h1>
+					<img class="cuoco-img" th:src=${cuoco.urlImage} />
+
+					<div>
+						Data di nascita:
+						<span th:text="${#temporals.format(cuoco.dataDiNascita, 'dd/MM/yyyy')}">
+
+						</span>
+					</div>
+					<h2>Ricette:</h2>
+					<div th:if="${cuoco.ricette==null || cuoco.ricette.isEmpty()}">Non ci sono ricette</div>
+					<ul>
+						<li th:each="ricetta : ${cuoco.ricette}">
+							<h2><a th:href="@{'/ricetta' + '/' + ${ricetta.id}}" th:text="${ricetta.nome}"
+									class="nav-link">Carbonara</a></h2>
+						</li>
+					</ul>
+				</div>
+				<div th:unless="${cuoco}">Non esiste</div>
+			</div>
+			<!--Home Image-->
+			<img src="/images/home.png" class="home-img">
+			<!-- Home Mask Image -->
+			<img src="/images/home-mask.png" alt="" class="home-mask">
+		</div>
+	</section>
+</body>
+
+</html>

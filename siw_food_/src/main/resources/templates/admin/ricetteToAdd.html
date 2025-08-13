@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>SiwFood - Aggiunta Ricette </title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<!-- Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+		<!-- Nav -->
+		<div class="nav container">
+			<!-- Logo -->
+			<a href="#" class="logo">
+				<img src="/images/logo.png" alt="" />
+			</a>
+			<!-- Navbar -->
+			<div class="navbar">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/ricetta" class="nav-link">Ricette</a>
+				<a href="/cuoco" class="nav-link">Cuochi</a>
+				<a href="/ingrediente" class="nav-link">Ingredienti</a>
+			</div>
+			<!--Nav Icons -->
+			<div class="nav-icons">
+				<div th:if="${userDetails}">
+					<a th:text="${userDetails.username}" class="nav-log"></a><br>
+					<a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				</div>
+				<div th:unless="${userDetails}">
+					<a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+				</div>
+			</div>
+	</header>
+	<!--Home-->
+	<section class="home" id="home">
+		<div class="home-content container">
+			<div class="home-text">
+				<h1 th:text="'Ricette di ' + ${cuoco.nome} + ' ' + ${cuoco.cognome}"></h1>
+				<div th:if="${cuoco.ricette.isEmpty()}">Non ci sono ricette per questo cuoco</div>
+				<ul>
+					<li th:each="ricetta : ${cuoco.ricette}"><br>
+						<span th:text="${ricetta.nome}"></span><br><br>
+						<a th:href="@{'/admin/removeRicettaFromCuoco/'+ ${ricetta.id}+'/'+${cuoco.id}}" class="update-link">Rimuovi</a>
+					</li>
+				</ul>
+				<div><br>
+					<h2>Ricette che si possono aggiungere:</h2>
+					<ul>
+						<li th:each="ricetta : ${ricetteToAdd}"><br>
+							<span th:text="${ricetta.nome}" class="chef-name"></span><br><br>
+							<a th:href="@{'/admin/addRicettaToCuoco/'+ ${ricetta.id}+'/'+${cuoco.id}}" class="update-link">Aggiungi</a>
+						</li>
+					</ul>
+					<div>
+						<div><br>
+							<a th:href="@{'/admin/formUpdateCuoco/'+ ${cuoco.id}}"><button
+									type="button" class="submit-button">Fine</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Home Image-->
+			<img src="/images/home.png" alt="" class="home-img">
+			<!-- Home Mask Image-->
+			<img src="/images/home-mask.png" alt="" class="home-mask">
+		</div>
+	</section>
+	
+	<footer>
+	       <p>Contact us: info@siwFood.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+
+</html>

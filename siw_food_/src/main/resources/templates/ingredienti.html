@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>SiwFood - Homepage</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<!-- Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+
+<body>
+	<header>
+		<div class="nav container">
+			<a href="#" class="logo">
+				<img src="images/logo.png" alt="" />
+			</a>
+			<div class="navbar">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/ricetta" class="nav-link">Ricette</a>
+				<a href="/cuoco" class="nav-link">Cuochi</a>
+				<a href="/ingrediente" class="nav-link">Ingredienti</a>
+			</div>
+			<div class="nav-icons">
+				<div th:if="${userDetails}">
+					<a th:text="${userDetails.username}" class="nav-log"></a><br>
+					<a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				</div>
+				<div th:unless="${userDetails}">
+					<a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+				</div>
+			</div>
+	</header>
+	<section class="home" id="home">
+		<div class="home-content container">
+			<div class="home-text">
+				<h1>Ingredienti</h1>
+				<div th:if="${ingredienti==null || ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+				<li th:each="ingrediente : ${ingredienti}">
+					<a th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+						th:text="${ingrediente.nome} + ' (' + ${ingrediente.quantita} + ')'" class="btn">Pecorino romano
+						(50
+						g)</a> <br>
+				</li>
+			</div>
+			<img src="images/home.png" alt="" class="home-img">
+			<img src="images/home-mask.png" alt="" class="home-mask">
+		</div>
+	</section>
+	
+	<footer>
+	       <p>Contact us: info@siwFood.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+
+</html>

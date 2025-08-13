@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>SiwFood - Ingredienti Ricetta</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<!-- Box Icons -->
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header>
+		<!-- Nav -->
+		<div class="nav container">
+			<!-- Logo -->
+			<a href="/" class="logo">
+				<img src="/images/logo.png" alt="" />
+			</a>
+			<!-- Navbar -->
+			<div class="navbar">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/ricetta" class="nav-link">Ricette</a>
+				<a href="/cuoco" class="nav-link">Cuochi</a>
+				<a href="/ingrediente" class="nav-link">Ingredienti</a>
+			</div>
+			<!--Nav Icons -->
+			<div class="nav-icons">
+				<div th:if="${userDetails}">
+					<a th:text="${userDetails.username}" class="nav-log"></a><br>
+					<a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+				</div>
+				<div th:unless="${userDetails}">
+					<a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+				</div>
+			</div>
+	</header>
+	<!--Home-->
+	<section class="home" id="home">
+		<div class="home-content container">
+			<div class="home-text">
+
+				<h3 th:text="'Ingredienti della ricetta ' + ${ricetta.nome}"></h3>
+				<div th:if="${ricetta.ingredienti.isEmpty()}"><h2>Non ci sono ingredienti per questa ricetta</h2></div>
+				<ul>
+					<li th:each="ingrediente : ${ricetta.ingredienti}">
+						<span th:text="${ingrediente.nome}+' ('+${ingrediente.quantita}+')'"></span>
+						<a
+							th:href="@{'/default/removeIngredienteFromRicetta/'+ ${ingrediente.id}+'/'+${ricetta.id}}" class="btn">Cancella</a>
+					</li>
+				</ul>
+				<div>
+					<h2>Ingredienti che si possono aggiungere:</h2>
+					<ul>
+						<li th:each="ingrediente : ${ingredientiToAdd}">
+							<span th:text="${ingrediente.nome}+' ('+${ingrediente.quantita}+')'"></span>
+							<a
+								th:href="@{'/default/addIngredienteToRicetta/'+ ${ingrediente.id}+'/'+${ricetta.id}}" class="btn">Aggiungi</a>
+						</li>
+					</ul>
+						<div><br>
+							<a th:href="@{'/default/indexRicetta'}"><button type="button" class="submit-button">Fine</button></a>
+						</div>
+				</div>
+			</div>
+			<!--Home Image-->
+			<img src="/images/home.png" alt="" class="home-img">
+			<!-- Home Mask Image-->
+			<img src="/images/home-mask.png" alt="" class="home-mask">
+		</div>
+	</section>
+</body>
+
+</html>

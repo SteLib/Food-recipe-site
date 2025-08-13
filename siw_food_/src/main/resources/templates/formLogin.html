@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiwFood - Login</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Logo">
+            </a>
+            <div class="navbar">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/ricetta" class="nav-link">Ricette</a>
+                <a href="/cuoco" class="nav-link">Cuochi</a>
+            </div>
+            <div class="nav-icons">
+                <div th:if="${userDetails}">
+                    <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                    <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+                </div>
+                <div th:unless="${userDetails}">
+                    <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content container">
+            <div class="home-text">
+                <h1>Login</h1>
+                <form th:action="@{/login}" method="POST" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input id="username" name="username" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${param.error != null}">Username o password errati</span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+                <a th:href="@{/register}" th:text="Registrati" class="btn">Registrati</a>
+            </div>
+            <img src="images/home.png" alt="Home" class="home-img">
+            <img src="images/home-mask.png" alt="Home Mask" class="home-mask">
+        </div>
+    </section>
+	
+	<footer>
+	       <p>Contact us: info@siwFood.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+
+</html>

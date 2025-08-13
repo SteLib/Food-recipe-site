@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiwFood - HomePage</title>
+    <link rel="stylesheet" href="/css/stile.css">
+    <link rel="icon" href="static/favicon.png" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div class="nav container">
+            <a href="#" class="logo">
+                <img src="/images/logo.png" alt="SiwFood Logo" />
+            </a>
+            <div class="navbar">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/ricetta" class="nav-link">Ricette</a>
+                <a href="/cuoco" class="nav-link">Cuochi</a>
+            </div>
+            <div class="nav-icons">
+                <div th:if="${userDetails}">
+                    <a th:text="${userDetails.username}" class="nav-log"></a><br>
+                    <a href="/logout" class="nav-link">Logout <i class='bx bx-user'></i></a>
+                </div>
+                <div th:unless="${userDetails}">
+                    <a href="/login" class="nav-link">Login <i class='bx bx-user'></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content container">
+            <div class="home-text">
+                <h1>Consulta l'archivio:</h1>
+                <a href="/ricetta" class="btn">Elenco Ricette</a>
+                <br>
+                <a href="/cuoco" class="btn">Elenco Cuochi</a>
+            </div>
+            <img src="/images/home.png" class="home-img" alt="Home Image">
+            <img src="/images/home-mask.png" alt="Home Mask" class="home-mask">
+        </div>
+    </section>
+	
+	<footer>
+	       <p>Contact us: info@siwFood.com</p>
+	       <p>Follow us on 
+	           <a href="#"><img src="/images/facebookLogo.png" alt="Facebook" /></a>
+	           <a href="#"><img src="/images/x_logo.jpeg" alt="Twitter" /></a>
+			<a href="#"><img src="/images/instagram-logo.jpeg" alt="Instagram"/></a>
+		</p>
+	</footer>
+</body>
+
+</html>

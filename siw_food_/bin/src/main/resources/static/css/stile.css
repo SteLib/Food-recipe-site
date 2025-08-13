@@ -1,0 +1,376 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&family=Righteous&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	scroll-padding-top: 3rem;
+	font-family: var(--font-family-1);
+}
+
+/* Variabili */
+:root {
+	--brown: #4b1204;
+	--yellow-color: #ffa10a;
+	--text-color: #121212;
+	--container-color: #efe8e0;
+	--red: #a72e1b;
+	--bg-color: #fff;
+	--text-alter-color: #94908e;
+	--font-family-1: "Mitr", sans-serif;
+	--font-family-2: "Righteous", sans-serif;
+}
+
+body {
+	color: var(--red);
+	background: var(--red);
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	width: 100%;
+}
+
+section {
+	padding: 3rem 0 2rem;
+}
+
+.container {
+	max-width: 1400px;
+	margin: auto;
+	width: 100%;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: var(--red);
+	border-bottom: 1px solid rgb(255 255 255 / 10%);
+	z-index: 100;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 0;
+}
+
+.logo img {
+	width: 75px; /* Aumenta la larghezza dell'immagine del logo */
+}
+
+
+.navbar {
+	display: flex;
+	align-items: center;
+	column-gap: 1.5rem;
+}
+
+.nav-link {
+	font-size: 0.88rem;
+	color: var(--bg-color);
+	transition: 0.4s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.nav-log{
+	font-size: 0.88rem;
+	color: var(--bg-color);
+}
+
+.nav-link:hover {
+	color: var(--text-alter-color);
+	transition: 0.4s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.nav.icon {
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+}
+
+.nav-icons .bx {
+	color: var(--bg-color);
+	font-size: 20px;
+}
+
+.cart {
+	position: relative;
+}
+
+.cart span {
+	position: absolute;
+	right: -10px;
+	top: -10px;
+	background: var(--text-color);
+	font-size: 10px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	color: var(--bg-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: sans-serif;
+}
+
+.menu-icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 5px;
+	cursor: pointer;
+	z-index: 200;
+	transition: 0.3s;
+}
+
+.menu-icon div {
+	display: block;
+	background: var(--bg-color);
+	height: 2px;
+	width: 23px;
+	transition: 0.3s;
+}
+
+.move .line1 {
+	transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.move .line2 {
+	opacity: 0;
+}
+
+.move .line3 {
+	transform: rotate(45deg) translate(-5px, 5px);
+}
+
+.home {
+	min-height: 650px;
+	background: var(--red);
+	position: relative;
+	padding: 7rem 0 2rem;
+}
+
+.home-content {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	gap: 1.5rem;
+	color: var(--bg-color);
+}
+
+.home-text {
+	z-index: 4;
+}
+
+.home-text h1 {
+	font-family: var(--font-family-2);
+	font-size: 3rem;
+	line-height: 6rem;
+	font-weight: 400;
+}
+
+.home-text p {
+	font-size: 1.025rem;
+	margin: 2rem 0 1rem;
+}
+
+.home-text h3 {
+	font-size: 2.7rem;
+	line-height: 2.7rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
+}
+
+.btn {
+	max-width: 160px;
+	padding: 15px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	background: var(--yellow-color);
+	color: var(--bg-color);
+	cursor: pointer;
+}
+
+.btn:hover {
+	background: var(--text-color);
+	transition: 0.4s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.home-img {
+	max-width: 540px;
+	width: 100%;
+	z-index: 4;
+}
+
+.home-mask {
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.ricetta-img {
+	max-width: 500px;
+	max-height: 500px;
+	object-fit: contain;
+	border-radius: 20%;
+}
+.cuoco-img{
+	max-width: 500px;
+	max-height: 500px;
+	object-fit: contain;
+	border-radius: 30%;
+}
+
+/* Stile per il modulo di login */
+.login-form {
+	width: 100%;
+	max-width: 300px;
+	padding: 5px;
+	margin: initial;
+}
+
+/* Stile per i gruppi di campi del modulo */
+.form-group {
+	margin-bottom: 15px;
+}
+
+/* Stile per le etichette dei campi del modulo */
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+/* Stile per i campi di input del modulo */
+.form-group input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+/* Stile per il pulsante di invio del modulo */
+.form-group button {
+	width: 100%;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: #ffa10a;
+	color: white;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+/* Stile per il pulsante di invio del modulo al passaggio del mouse */
+.form-group button:hover {
+	background-color: #4b1204;
+}
+
+.date-input,
+.file-input {
+	width: 100%;
+	/* Imposta la larghezza al 100% del contenitore */
+	padding: 10px;
+	/* Aggiunge un po' di spazio intorno al testo */
+	border: 1px solid #ddd;
+	/* Aggiunge un bordo sottile */
+	border-radius: 5px;
+	/* Arrotonda gli angoli */
+	font-size: 16px;
+	/* Imposta la dimensione del testo */
+}
+
+.file-input {
+	cursor: pointer;
+	/* Cambia il cursore a una mano quando si passa sopra */
+}
+
+.text-input {
+	width: 100%;
+	/* Imposta la larghezza al 100% del contenitore */
+	padding: 10px;
+	/* Aggiunge un po' di spazio intorno al testo */
+	border: 1px solid #ddd;
+	/* Aggiunge un bordo sottile */
+	border-radius: 5px;
+	/* Arrotonda gli angoli */
+	font-size: 16px;
+	/* Imposta la dimensione del testo */
+}
+
+.submit-button {
+	width: 100%;
+	/* Imposta la larghezza al 100% del contenitore */
+	padding: 10px;
+	/* Aggiunge un po' di spazio intorno al testo */
+	border: none;
+	/* Rimuove il bordo */
+	border-radius: 5px;
+	/* Arrotonda gli angoli */
+	background-color: #ffa10a;
+	/* Imposta il colore di sfondo */
+	color: white;
+	/* Imposta il colore del testo */
+	font-size: 18px;
+	/* Imposta la dimensione del testo */
+	cursor: pointer;
+	/* Cambia il cursore a una mano quando si passa sopra */
+}
+
+.submit-button:hover {
+	background-color: #4b1204;
+	/* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+.chef-name,
+.chef-surname {
+	font-size: 18px;
+	/* Aumenta la dimensione del testo */
+	color:#efe8e0;
+	/* Imposta il colore del testo */
+}
+
+.update-link,
+.delete-link {
+	color:#efe8e0;
+	/* Cambia il colore del link */
+	text-decoration: none;
+	/* Rimuove il sottolineato */
+	font-size: 16px;
+	/* Aumenta la dimensione del testo */
+	padding: 10px;
+	/* Aggiunge un po' di spazio intorno al link */
+	border-radius: 5px;
+	/* Arrotonda gli angoli del link */
+	background-color:#ffa10a;
+	/* Aggiunge uno sfondo chiaro al link */
+	margin-right: 10px;
+	/* Aggiunge un po' di spazio a destra del link */
+}
+
+.update-link:hover,
+.delete-link:hover {
+	color: white;
+	/* Cambia il colore del testo al passaggio del mouse */
+	background-color:#4b1204;
+	/* Cambia lo sfondo al passaggio del mouse */
+}
+
+ul, ol {
+	list-style-type: none;
+}
+
