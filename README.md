@@ -1,4 +1,4 @@
-# 🍽️ Chef's Table
+# 🍽️ Chef's food recipe site
 
 A dynamic web application built with **Spring Boot**, designed to showcase chefs and their culinary creations. Users can explore recipes, follow favorite chefs. Admins manage content and user activity through a secure dashboard.
 
